@@ -146,7 +146,7 @@ d3.csv("statesdata.csv", function(data) {
     	div.transition()        
       	   .duration(200)      
            .style("opacity", .9);      
-           div.text(d.properties.name + ": " + parseInt(d.properties.value))
+           div.text(d.properties.name + ": " + parseInt(d.properties.value) + "%")
            .style("left", (d3.event.pageX) + "px")     
            .style("top", (d3.event.pageY - 28) + "px");    
 	})   
@@ -233,7 +233,7 @@ d3.csv("statesdata.csv", function(data) {
 			.range([h, 0])
 			.domain([minVal, maxVal]);
 
-		var yAxis = d3.axisRight(y);
+		var yAxis = d3.axisRight(y).tickFormat(function(d) { return d + "%"; });
 
 		key.append("g")
 			.attr("class", "y axis")
